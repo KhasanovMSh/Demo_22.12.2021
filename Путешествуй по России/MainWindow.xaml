@@ -1,0 +1,30 @@
+﻿<Window x:Class="Путешествуй_по_России.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Путешествуй_по_России"
+        mc:Ignorable="d"
+        Title="Путешествуй по России" MinHeight="600" MinWidth="1000" Icon="Resources/Icons/logo_full_color_bmp.bmp" FontFamily="Comic Sans MS">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="GrdHeader" Grid.Row="0" Background=" #445c93">
+            <Button x:Name="BtnBack" Content="Назад" MinWidth="30" MinHeight="30" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BtnBack_Click"/>
+            <Button x:Name="BtnHotelsPage" Content="Список отелей" MinWidth="30" MinHeight="30" Margin="0,0,150,0" HorizontalAlignment="Right" VerticalAlignment="Center" Click="BtnHotelsPage_Click"/>
+            <Button x:Name="BtnAddEditPage" Content="Добавление отеля" MinWidth="30" MinHeight="30" HorizontalAlignment="Right" VerticalAlignment="Center" Click="BtnAddEditPage_Click"/>
+        </Grid>
+
+        <Grid x:Name="GrdMain" Grid.Row="1" Background="#bae3e8">
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered"></Frame>
+        </Grid>
+
+        <Grid x:Name="GrdFooter" Grid.Row="2" Background="#e31e24">
+        </Grid>
+    </Grid>
+</Window>

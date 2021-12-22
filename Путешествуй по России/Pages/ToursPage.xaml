@@ -1,0 +1,77 @@
+﻿<Page x:Class="Путешествуй_по_России.Pages.ToursPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Путешествуй_по_России.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ToursPage" FontFamily="Comic Sans MS">
+
+    <Page.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MaxHeight="90"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <WrapPanel Orientation="Horizontal">
+                    <TextBlock Text="Поиск тура по названию" Height="20"  HorizontalAlignment="Left"  VerticalAlignment="Bottom"></TextBlock>
+                    <TextBox x:Name="TbName" Height="20" Width="100"  HorizontalAlignment="Left"  TextChanged="TbName_TextChanged"></TextBox>
+
+                    <TextBlock Text="Поиск тура по описанию" Height="20"  HorizontalAlignment="Left" ></TextBlock>
+                    <TextBox x:Name="TbDescription" Height="20" Width="100" HorizontalAlignment="Left" TextChanged="TbDescription_TextChanged"></TextBox>
+
+                    <TextBlock Text="Фильтрация по типу тура" Height="20"  HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBlock>
+                    <ComboBox x:Name="ComboTypes" Height="20" Width="100" Margin="5" SelectionChanged="ComboTypes_SelectionChanged">
+                        
+                    </ComboBox>
+
+                    <TextBlock Text="Актуальные" VerticalAlignment="Center"></TextBlock>
+                    <CheckBox x:Name="CheckActual" Margin="5" VerticalAlignment="Center" Checked="CheckActual_Checked" Unchecked="CheckActual_Unchecked"></CheckBox>
+
+                    <Button x:Name="BtnSortToHigh" Content="Сортировать по возрастанию цены" Height="20" MinWidth="100" Click="BtnSortToHigh_Click"></Button>
+                    <Button x:Name="BtnSortToLow" Content="Сортировать по убыванию цены" Height="20" MinWidth="100" Click="BtnSortToLow_Click"></Button>
+
+                </WrapPanel>
+            </Grid>
+            
+        </Grid>
+
+        <ListView x:Name="LvTours" Grid.Row="1" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1" BorderBrush="Gray" HorizontalAlignment="Center" VerticalAlignment="Center">                        <Grid Width="400" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="50*"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>                            <TextBlock Grid.Row="0" Text="{Binding Name}" HorizontalAlignment="Center" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>                            <Image Grid.Row="1" Source="{Binding ImagePath}" HorizontalAlignment="Center"></Image>                            <TextBlock Grid.Row="2" Text="{Binding FullViewPrice}" HorizontalAlignment="Center" FontSize="20" FontStyle="Oblique"></TextBlock>                            <UniformGrid Grid.Row="3" Columns="2" Rows="1" HorizontalAlignment="Center">                                <TextBlock Text="{Binding State}" Foreground="{Binding solidColorBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3 3"></TextBlock>                                <TextBlock Text="{Binding FullTicketCount}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>                            </UniformGrid>                        </Grid>                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
+           
